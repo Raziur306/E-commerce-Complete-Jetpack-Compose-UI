@@ -14,6 +14,8 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.SpanStyle
 import androidx.compose.ui.text.buildAnnotatedString
+import androidx.compose.ui.text.font.Font
+import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.withStyle
@@ -23,6 +25,7 @@ import androidx.navigation.NavController
 import com.eritlab.jexmon.presentation.ui.theme.RedOrange
 import com.eritlab.jexmon.R
 import com.eritlab.jexmon.presentation.Screen
+import com.eritlab.jexmon.presentation.common.CustomDefaultBtn
 import com.google.accompanist.pager.ExperimentalPagerApi
 import com.google.accompanist.pager.HorizontalPager
 import com.google.accompanist.pager.rememberPagerState
@@ -74,6 +77,7 @@ fun SplashScreen(navController: NavController) {
                         fontSize = 50.sp,
                         color = MaterialTheme.colors.RedOrange,
                         fontWeight = FontWeight.Bold,
+                        fontFamily = FontFamily(Font(R.font.muli_bold)),
                     )
                     Spacer(modifier = Modifier.height(5.dp))
                     when (currentPosition.value) {
@@ -93,7 +97,8 @@ fun SplashScreen(navController: NavController) {
                                 },
                                 color = Color.LightGray,
                                 fontSize = 18.sp,
-                                textAlign = TextAlign.Center
+                                textAlign = TextAlign.Center,
+                                fontFamily = FontFamily(Font(R.font.muli)),
                             )
                         }
                         1 -> {
@@ -127,27 +132,17 @@ fun SplashScreen(navController: NavController) {
 
 
         DotIndicator(splashImageList.size, currentPosition.value)
-        Button(
-            modifier = Modifier
-                .fillMaxWidth()
-                .padding(50.dp)
-                .height(55.dp)
-                .clip(RoundedCornerShape(20.dp)),
-            onClick = {
-                if (currentPosition.value < 2) {
-                    currentPosition.value++
-                    animate.value = !animate.value
 
-                } else {
-                    navController.navigate(Screen.SignInScreen.route)
-                }
-            },
-            colors = ButtonDefaults.buttonColors(
-                backgroundColor = MaterialTheme.colors.RedOrange,
-                contentColor = Color.White
-            ),
-        ) {
-            Text(text = "Continue", fontSize = 16.sp)
+        CustomDefaultBtn(btnText = "Continue") {
+            if (currentPosition.value < 2) {
+                currentPosition.value++
+                animate.value = !animate.value
+
+            } else {
+                navController.popBackStack()
+                navController.navigate(Screen.SignInScreen.route)
+
+            }
         }
     }
 }
