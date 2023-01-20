@@ -77,4 +77,9 @@ dependencies {
     //retrofit
     implementation "com.squareup.retrofit2:retrofit:$retrofit_version"
     implementation "com.squareup.retrofit2:converter-gson:$retrofit_version"
+
+    //pager
+    implementation "com.google.accompanist:accompanist-pager:0.28.0"
+
+
 }
