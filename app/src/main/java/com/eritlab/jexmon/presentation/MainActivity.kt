@@ -17,7 +17,10 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import com.eritlab.jexmon.presentation.forget_password_screen.component.ForgetPasswordScreen
+import com.eritlab.jexmon.presentation.sign_in_screen.component.LoginScreen
 import com.eritlab.jexmon.presentation.on_boarding_screen.component.SplashScreen
+import com.eritlab.jexmon.presentation.sign_up_screen.component.SignUpScreen
 import com.eritlab.jexmon.presentation.ui.theme.JexmonTheme
 
 class MainActivity : ComponentActivity() {
@@ -67,7 +70,21 @@ private fun ShowScreen(context: Context) {
                     clearFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN)
                     clearFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN)
                 }
+
             }
+            LoginScreen(navController = navController)
+        }
+        composable(Screen.ForgetPasswordScreen.route) {
+            ForgetPasswordScreen(navController = navController)
+        }
+        composable(Screen.OTPScreen.route) {
+
+        }
+        composable(Screen.SignInSuccess.route) {
+
+        }
+        composable(Screen.SignUpScreen.route) {
+            SignUpScreen(navController)
         }
     }
 

@@ -94,7 +94,7 @@ fun ForgetPasswordScreen(navController: NavController) {
                 keyboardType = KeyboardType.Email,
                 visualTransformation = VisualTransformation.None,
                 onChanged = { newEmail ->
-                    email = newEmail
+               //     email = newEmail
                 }
             )
 
@@ -105,17 +105,14 @@ fun ForgetPasswordScreen(navController: NavController) {
                 emailErrorState.value = !isEmailValid
                 if (isEmailValid) {
                     navController.popBackStack()
-                    navController.navigate(Screen.SignInSuccess.route)
+                    navController.navigate(Screen.SignInScreen.route)
                 }
             }
 
             Row(
                 modifier = Modifier
                     .fillMaxWidth()
-                    .padding(top = 30.dp, bottom = 30.dp)
-                    .clickable {
-
-                    },
+                    .padding(top = 30.dp, bottom = 30.dp),
                 horizontalArrangement = Arrangement.Center
             ) {
                 Text(text = "Don't have an account? ", color = MaterialTheme.colors.TextColor)
