@@ -14,25 +14,25 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.eritlab.jexmon.presentation.Screen
-import com.eritlab.jexmon.presentation.ui.theme.RedOrange
+import com.eritlab.jexmon.presentation.ui.theme.PrimaryColor
 
 @Composable
 fun CustomDefaultBtn(
+    shapeSize: Float,
     btnText: String,
     onClick: () -> Unit
 ) {
     Button(
         modifier = Modifier
             .fillMaxWidth()
-            .padding(50.dp)
+            .padding(top = 30.dp, bottom = 30.dp)
             .height(55.dp)
-            .clip(RoundedCornerShape(20.dp)),
+            .clip(RoundedCornerShape(shapeSize.dp)),
         onClick = {
             onClick()
         },
         colors = ButtonDefaults.buttonColors(
-            backgroundColor = MaterialTheme.colors.RedOrange,
+            backgroundColor = MaterialTheme.colors.PrimaryColor,
             contentColor = Color.White
         ),
     ) {

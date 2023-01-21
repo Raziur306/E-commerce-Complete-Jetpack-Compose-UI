@@ -1,6 +1,5 @@
 package com.eritlab.jexmon.presentation.on_boarding_screen.component
 
-import android.content.Context
 import androidx.compose.animation.*
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.*
@@ -9,8 +8,6 @@ import androidx.compose.material.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.clip
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.SpanStyle
 import androidx.compose.ui.text.buildAnnotatedString
@@ -22,10 +19,11 @@ import androidx.compose.ui.text.withStyle
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
-import com.eritlab.jexmon.presentation.ui.theme.RedOrange
 import com.eritlab.jexmon.R
 import com.eritlab.jexmon.presentation.Screen
 import com.eritlab.jexmon.presentation.common.CustomDefaultBtn
+import com.eritlab.jexmon.presentation.ui.theme.PrimaryColor
+import com.eritlab.jexmon.presentation.ui.theme.TextColor
 import com.google.accompanist.pager.ExperimentalPagerApi
 import com.google.accompanist.pager.HorizontalPager
 import com.google.accompanist.pager.rememberPagerState
@@ -75,7 +73,7 @@ fun SplashScreen(navController: NavController) {
                     Text(
                         text = "JEXMON",
                         fontSize = 50.sp,
-                        color = MaterialTheme.colors.RedOrange,
+                        color = MaterialTheme.colors.PrimaryColor,
                         fontWeight = FontWeight.Bold,
                         fontFamily = FontFamily(Font(R.font.muli_bold)),
                     )
@@ -88,14 +86,14 @@ fun SplashScreen(navController: NavController) {
                                     withStyle(
                                         style = SpanStyle(
                                             fontWeight = FontWeight.Bold,
-                                            color = Color.DarkGray
+                                            color = MaterialTheme.colors.TextColor,
                                         )
                                     ) {
                                         append("Jexmon.")
                                     }
                                     append(" Let's Shop!")
                                 },
-                                color = Color.LightGray,
+                                color = MaterialTheme.colors.TextColor,
                                 fontSize = 18.sp,
                                 textAlign = TextAlign.Center,
                                 fontFamily = FontFamily(Font(R.font.muli)),
@@ -104,7 +102,7 @@ fun SplashScreen(navController: NavController) {
                         1 -> {
                             Text(
                                 text = "We help people connect with store\naround Bangladesh",
-                                color = Color.LightGray,
+                                color = MaterialTheme.colors.TextColor,
                                 fontSize = 18.sp,
                                 textAlign = TextAlign.Center
                             )
@@ -112,7 +110,7 @@ fun SplashScreen(navController: NavController) {
                         else -> {
                             Text(
                                 text = "We show easy way to shop.\nJust stay at home with us",
-                                color = Color.LightGray,
+                                color = MaterialTheme.colors.TextColor,
                                 fontSize = 18.sp,
                                 textAlign = TextAlign.Center
                             )
@@ -133,7 +131,7 @@ fun SplashScreen(navController: NavController) {
 
         DotIndicator(splashImageList.size, currentPosition.value)
 
-        CustomDefaultBtn(btnText = "Continue") {
+        CustomDefaultBtn(btnText = "Continue", shapeSize = 10f) {
             if (currentPosition.value < 2) {
                 currentPosition.value++
                 animate.value = !animate.value
