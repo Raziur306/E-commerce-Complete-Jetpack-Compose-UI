@@ -26,7 +26,7 @@ fun CustomTextField(
     keyboardType: KeyboardType,
     visualTransformation: VisualTransformation,
     errorState: MutableState<Boolean>,
-    onChanged: (String) -> Unit
+    onChanged: (TextFieldValue) -> Unit
 ) {
     //state
     var text by remember {
@@ -37,7 +37,7 @@ fun CustomTextField(
         value = text,
         onValueChange = { newText ->
             text = newText
-            onChanged(newText.text)
+            onChanged(newText)
         },
         placeholder = {
             Text(text = placeholder)

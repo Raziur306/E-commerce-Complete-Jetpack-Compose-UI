@@ -43,7 +43,9 @@ fun SplashScreen(navController: NavController) {
     val pagerState = rememberPagerState()
 
     Column(
-        modifier = Modifier.fillMaxSize(),
+        modifier = Modifier
+            .fillMaxSize()
+            .padding(30.dp),
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.SpaceAround
     ) {
@@ -67,7 +69,7 @@ fun SplashScreen(navController: NavController) {
                     modifier = Modifier
                         .fillMaxWidth()
                         .fillMaxHeight(0.6f)
-                        .padding(top = 40.dp),
+                        .padding(top = 10.dp),
                     horizontalAlignment = Alignment.CenterHorizontally,
                 ) {
                     Text(
@@ -135,11 +137,8 @@ fun SplashScreen(navController: NavController) {
             if (currentPosition.value < 2) {
                 currentPosition.value++
                 animate.value = !animate.value
-
             } else {
-                navController.popBackStack()
                 navController.navigate(Screen.SignInScreen.route)
-
             }
         }
     }

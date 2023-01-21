@@ -1,6 +1,7 @@
 package com.eritlab.jexmon.presentation.sign_in_screen.component
 
 
+import android.util.Log
 import android.util.Patterns
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -16,6 +17,7 @@ import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.input.PasswordVisualTransformation
+import androidx.compose.ui.text.input.TextFieldValue
 import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextDecoration
@@ -26,6 +28,8 @@ import com.eritlab.jexmon.R
 import com.eritlab.jexmon.presentation.Screen
 import com.eritlab.jexmon.presentation.common.CustomDefaultBtn
 import com.eritlab.jexmon.presentation.common.CustomTextField
+import com.eritlab.jexmon.presentation.common.component.DefaultBackArrow
+import com.eritlab.jexmon.presentation.common.component.ErrorSuggestion
 import com.eritlab.jexmon.presentation.ui.theme.PrimaryColor
 import com.eritlab.jexmon.presentation.ui.theme.PrimaryLightColor
 import com.eritlab.jexmon.presentation.ui.theme.TextColor
@@ -33,8 +37,8 @@ import com.eritlab.jexmon.presentation.ui.theme.TextColor
 
 @Composable
 fun LoginScreen(navController: NavController) {
-    var email: String = ""
-    var password: String = ""
+    var email by remember { mutableStateOf(TextFieldValue("")) }
+    var password by remember { mutableStateOf(TextFieldValue("")) }
     var checkBox by remember {
         mutableStateOf(false)
     }
@@ -60,11 +64,9 @@ fun LoginScreen(navController: NavController) {
         )
         {
             Box(modifier = Modifier.weight(0.7f)) {
-                Image(
-                    painter = painterResource(id = R.drawable.back_icon),
-                    contentDescription = "Login Back Button",
-                    modifier = Modifier.size(20.dp)
-                )
+                DefaultBackArrow {
+                    navController.popBackStack()
+                }
             }
             Box(modifier = Modifier.weight(1.0f)) {
                 Text(text = "Sign in", color = MaterialTheme.colors.TextColor, fontSize = 18.sp)
@@ -103,6 +105,15 @@ fun LoginScreen(navController: NavController) {
                 password = newPass
             }
         )
+        Spacer(modifier = Modifier.height(10.dp))
+        if (emailErrorState.value) {
+            ErrorSuggestion("Please enter valid email address.")
+        }
+        if (passwordErrorState.value) {
+            Row() {
+                ErrorSuggestion("Please enter valid password.")
+            }
+        }
         Row(
             modifier = Modifier
                 .fillMaxWidth()
@@ -132,12 +143,11 @@ fun LoginScreen(navController: NavController) {
         CustomDefaultBtn(shapeSize = 50f, btnText = "Continue") {
             //email pattern
             val pattern = Patterns.EMAIL_ADDRESS
-            val isEmailValid = pattern.matcher(email).matches()
-            val isPassValid = password.length < 7
+            val isEmailValid = pattern.matcher(email.text).matches()
+            val isPassValid = password.text.length >= 8
             emailErrorState.value = !isEmailValid
             passwordErrorState.value = !isPassValid
             if (isEmailValid && isPassValid) {
-                navController.popBackStack()
                 navController.navigate(Screen.SignInSuccess.route)
             }
         }
@@ -207,10 +217,7 @@ fun LoginScreen(navController: NavController) {
             Row(
                 modifier = Modifier
                     .fillMaxWidth()
-                    .padding(top = 30.dp)
-                    .clickable {
-
-                    },
+                    .padding(top = 30.dp),
                 horizontalArrangement = Arrangement.Center
             ) {
                 Text(text = "Don't have an account? ", color = MaterialTheme.colors.TextColor)
@@ -218,7 +225,7 @@ fun LoginScreen(navController: NavController) {
                     text = "Sign Up",
                     color = MaterialTheme.colors.PrimaryColor,
                     modifier = Modifier.clickable {
-
+                        navController.navigate(Screen.SignUpScreen.route)
                     })
             }
         }
