@@ -15,29 +15,31 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import androidx.navigation.compose.currentBackStackEntryAsState
+import com.eritlab.jexmon.presentation.graphs.home.ShopHomeScreen
 import com.eritlab.jexmon.presentation.screens.home_screen.BottomNavItem
 import com.eritlab.jexmon.presentation.ui.theme.PrimaryColor
 import com.eritlab.jexmon.presentation.ui.theme.PrimaryLightColor
 import com.eritlab.jexmon.presentation.ui.theme.TextColor
 
 @Composable
-fun NavigationBar(navController: NavController) {
+fun NavigationBar(
+    navController: NavController,
+    isVisible: (Boolean) -> Unit
+) {
     val navItemList = listOf(
         BottomNavItem.HomeNav,
         BottomNavItem.FavouriteNav,
         BottomNavItem.ChatNav,
         BottomNavItem.ProfileNav,
     )
-
-
     val navBackStackEntry by navController.currentBackStackEntryAsState()
-    val currentScreen = remember { mutableStateOf(navItemList[0]) }
+
+
 
 
     BottomNavigation(
         backgroundColor = Color.White,
         modifier = Modifier
-            //  .padding(bottom = 10.dp, top = 10.dp)
             .background(color = Color.White)
             .shadow(
                 shape = RoundedCornerShape(topStart = 15.dp, topEnd = 15.dp),
@@ -49,21 +51,31 @@ fun NavigationBar(navController: NavController) {
     ) {
         navItemList.forEach { screen ->
             BottomNavigationItem(
-                selected = currentScreen.value.route == screen.route,
+                selected = navBackStackEntry?.destination?.route == screen.route, //currentScreen.value.route == screen.route,
                 icon = {
                     Icon(
                         painter = painterResource(id = screen.icon),
                         contentDescription = null,
-                        tint = if (currentScreen.value == screen) MaterialTheme.colors.PrimaryColor else LocalContentColor.current,
+                        tint = if (navBackStackEntry?.destination?.route == screen.route) MaterialTheme.colors.PrimaryColor else LocalContentColor.current,
                     )
                 },
                 //  label = { Text(text = screen.tittle) },
                 onClick = {
                     navController.navigate(screen.route)
-                    currentScreen.value = screen
                 },
                 unselectedContentColor = MaterialTheme.colors.TextColor,
             )
         }
     }
+    //hide topBar
+    when (navBackStackEntry?.destination?.route) {
+        ShopHomeScreen.DashboardScreen.route -> {
+            isVisible(true)
+        }
+        else -> {
+            isVisible(false)
+        }
+    }
+
+
 }

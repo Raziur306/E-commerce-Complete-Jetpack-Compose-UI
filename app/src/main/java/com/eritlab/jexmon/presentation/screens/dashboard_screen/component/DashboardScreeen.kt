@@ -11,7 +11,7 @@ import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
-import androidx.compose.runtime.Composable
+import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -41,7 +41,6 @@ import dagger.hilt.android.lifecycle.HiltViewModel
 fun DashboardScreen(
     popularProductState: LazyListState = rememberLazyListState(),
     suggestionProductState: LazyListState = rememberLazyListState(),
-    columnScrollString: ScrollState = rememberScrollState(),
     productViewModel: DashboardViewModel = hiltViewModel()
 ) {
 
@@ -51,7 +50,6 @@ fun DashboardScreen(
         modifier = Modifier
             .fillMaxSize()
             .padding(start = 15.dp, end = 15.dp)
-            .scrollable(state = columnScrollString, orientation = Orientation.Horizontal)
     ) {
         Column(
             modifier = Modifier
@@ -213,7 +211,7 @@ fun DashboardScreen(
             Text(text = "See More", color = MaterialTheme.colors.TextColor)
         }
 
-        Spacer(modifier = Modifier.height(8.dp))
+        Spacer(modifier = Modifier.height(80.dp))
 //special offer cart
         LazyRow(
             state = popularProductState,
@@ -322,6 +320,9 @@ fun DashboardScreen(
         ) {
             items(state.product!!.size) {
 
+                //favourite state rememberable
+                var favouriteRemember by remember { mutableStateOf(state.product[it].isFavourite) }
+
                 Column {
                     Box(
                         modifier = Modifier
@@ -364,19 +365,22 @@ fun DashboardScreen(
                                     MaterialTheme.colors.PrimaryLightColor,
                                     shape = CircleShape
                                 )
-                                .clip(CircleShape),
+                                .clip(CircleShape)
+                                .clickable {
+                                    favouriteRemember = !favouriteRemember
+                                },
                             contentAlignment = Alignment.Center
                         ) {
 
                             Image(
                                 painter = painterResource(
-                                    id = if (state.product[it].isFavourite)
+                                    id = if (favouriteRemember)
                                         R.drawable.heart_icon_2
                                     else R.drawable.heart_icon
                                 ),
                                 contentDescription = "Favourite Icon",
                                 modifier = Modifier.padding(3.dp),
-                                colorFilter = if (state.product[it].isFavourite) ColorFilter.tint(
+                                colorFilter = if (favouriteRemember) ColorFilter.tint(
                                     Color.Red
                                 ) else null
                             )
