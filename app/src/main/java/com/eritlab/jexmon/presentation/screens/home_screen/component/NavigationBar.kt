@@ -18,6 +18,7 @@ import androidx.navigation.compose.currentBackStackEntryAsState
 import com.eritlab.jexmon.presentation.screens.home_screen.BottomNavItem
 import com.eritlab.jexmon.presentation.ui.theme.PrimaryColor
 import com.eritlab.jexmon.presentation.ui.theme.PrimaryLightColor
+import com.eritlab.jexmon.presentation.ui.theme.TextColor
 
 @Composable
 fun NavigationBar(navController: NavController) {
@@ -31,6 +32,8 @@ fun NavigationBar(navController: NavController) {
 
     val navBackStackEntry by navController.currentBackStackEntryAsState()
     val currentScreen = remember { mutableStateOf(navItemList[0]) }
+
+
     BottomNavigation(
         backgroundColor = Color.White,
         modifier = Modifier
@@ -54,12 +57,12 @@ fun NavigationBar(navController: NavController) {
                         tint = if (currentScreen.value == screen) MaterialTheme.colors.PrimaryColor else LocalContentColor.current,
                     )
                 },
-                label = { Text(text = screen.tittle) },
+                //  label = { Text(text = screen.tittle) },
                 onClick = {
                     navController.navigate(screen.route)
                     currentScreen.value = screen
                 },
-                unselectedContentColor = MaterialTheme.colors.PrimaryLightColor,
+                unselectedContentColor = MaterialTheme.colors.TextColor,
             )
         }
     }

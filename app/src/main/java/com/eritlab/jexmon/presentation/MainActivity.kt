@@ -15,7 +15,9 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.navigation.compose.rememberNavController
 import com.eritlab.jexmon.presentation.graphs.root.RootNavigationGraph
 import com.eritlab.jexmon.presentation.ui.theme.JexmonTheme
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -36,7 +38,7 @@ class MainActivity : ComponentActivity() {
 @Composable
 private fun ShowScreen(context: Context) {
     val navHostController = rememberNavController()
-    
+
 
 
     RootNavigationGraph(navHostController = navHostController, context = context)

@@ -6,7 +6,7 @@ import com.eritlab.jexmon.domain.model.ProductModel
 import javax.inject.Inject
 
 class DemoDB @Inject constructor() {
-    val description =
+    private val description =
         "Wireless Controller for PS4™ gives you what you want in your gaming from over precision control your games to sharing …"
 
 
