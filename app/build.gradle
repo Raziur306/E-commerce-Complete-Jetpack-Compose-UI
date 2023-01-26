@@ -63,6 +63,9 @@ dependencies {
     debugImplementation "androidx.compose.ui:ui-tooling:$compose_ui_version"
     debugImplementation "androidx.compose.ui:ui-test-manifest:$compose_ui_version"
 
+    //navigation-compose
+    implementation "androidx.navigation:navigation-compose:2.5.3"
+
     //coil
     implementation "io.coil-kt:coil-compose:2.2.2"
 
@@ -71,6 +74,7 @@ dependencies {
     implementation "androidx.lifecycle:lifecycle-viewmodel-compose:2.5.1"
     kapt "com.google.dagger:hilt-compiler:$hilt_version"
     implementation 'androidx.hilt:hilt-navigation-compose:1.0.0'
+
 
     //okhttp3
     implementation "com.squareup.okhttp3:okhttp:4.10.0"
