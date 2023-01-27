@@ -9,18 +9,16 @@ import androidx.compose.material.Scaffold
 import androidx.compose.material.ScaffoldState
 import androidx.compose.material.rememberScaffoldState
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.geometry.Offset
-import androidx.compose.ui.input.nestedscroll.NestedScrollConnection
-import androidx.compose.ui.input.nestedscroll.NestedScrollSource
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
 import com.eritlab.jexmon.presentation.dashboard_screen.component.AppBar
 import com.eritlab.jexmon.presentation.dashboard_screen.component.NavigationBar
-import com.eritlab.jexmon.presentation.graphs.home.HomeNavGraph
+import com.eritlab.jexmon.presentation.graphs.detail_graph.DetailScreen
+import com.eritlab.jexmon.presentation.graphs.home_graph.HomeNavGraph
+import com.eritlab.jexmon.presentation.graphs.home_graph.ShopHomeScreen
 
 
 @SuppressLint("RememberReturnType")
@@ -45,6 +43,12 @@ fun HomeScreen(
                 isVisible = topBarVisibilityState.value,
                 searchCharSequence = {
 
+                },
+                onCartIconClick = {
+                    navController.navigate(DetailScreen.CartScreen.route)
+                },
+                onNotificationIconClick = {
+                    navController.navigate(DetailScreen.NotificationScreen.route)
                 })
         },
         bottomBar = {

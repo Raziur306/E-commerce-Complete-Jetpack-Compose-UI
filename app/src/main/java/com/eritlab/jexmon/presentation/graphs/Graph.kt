@@ -1,4 +1,4 @@
-package com.eritlab.jexmon.presentation.graphs.root
+package com.eritlab.jexmon.presentation.graphs
 
 object Graph {
     const val ROOT = "root_graph"

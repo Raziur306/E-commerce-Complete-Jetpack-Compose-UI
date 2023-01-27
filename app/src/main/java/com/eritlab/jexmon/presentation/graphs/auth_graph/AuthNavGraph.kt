@@ -12,7 +12,6 @@ import androidx.navigation.compose.composable
 import androidx.navigation.navigation
 import com.eritlab.jexmon.presentation.screens.forget_password_screen.component.ForgetPasswordScreen
 import com.eritlab.jexmon.presentation.graphs.auth_graph.AuthScreen
-import com.eritlab.jexmon.presentation.graphs.root.Graph
 import com.eritlab.jexmon.presentation.screens.on_boarding_screen.component.SplashScreen
 import com.eritlab.jexmon.presentation.screens.otp_screen.component.OTPScreen
 import com.eritlab.jexmon.presentation.screens.sign_in_screen.component.LoginScreen

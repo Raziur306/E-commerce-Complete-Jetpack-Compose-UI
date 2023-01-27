@@ -1,7 +1,7 @@
 package com.eritlab.jexmon.presentation.screens.home_screen
 
 import com.eritlab.jexmon.R
-import com.eritlab.jexmon.presentation.graphs.home.ShopHomeScreen
+import com.eritlab.jexmon.presentation.graphs.home_graph.ShopHomeScreen
 
 sealed class BottomNavItem(val tittle: String, val icon: Int, val route: String) {
     object HomeNav : BottomNavItem(

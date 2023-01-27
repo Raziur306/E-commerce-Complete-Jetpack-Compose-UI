@@ -21,7 +21,7 @@ import androidx.compose.ui.unit.sp
 import androidx.constraintlayout.compose.ConstraintLayout
 import androidx.navigation.NavController
 import com.eritlab.jexmon.R
-import com.eritlab.jexmon.presentation.graphs.home.ShopHomeScreen
+import com.eritlab.jexmon.presentation.graphs.home_graph.ShopHomeScreen
 import com.eritlab.jexmon.presentation.ui.theme.PrimaryColor
 import com.eritlab.jexmon.presentation.ui.theme.PrimaryLightColor
 
@@ -29,7 +29,9 @@ import com.eritlab.jexmon.presentation.ui.theme.PrimaryLightColor
 fun AppBar(
     navController: NavController,
     isVisible: Boolean,
-    searchCharSequence: (String) -> Unit
+    searchCharSequence: (String) -> Unit,
+    onNotificationIconClick: () -> Unit,
+    onCartIconClick: () -> Unit
 ) {
     var typedText by remember {
         mutableStateOf(TextFieldValue())
@@ -78,7 +80,7 @@ fun AppBar(
                     .clip(CircleShape)
                     .background(MaterialTheme.colors.PrimaryLightColor)
                     .clickable {
-
+                        onCartIconClick()
                     },
                 contentAlignment = Alignment.Center
             ) {
@@ -97,7 +99,7 @@ fun AppBar(
                         .background(MaterialTheme.colors.PrimaryLightColor)
                         .constrainAs(notification) {}
                         .clickable {
-                            navController.navigate(ShopHomeScreen.NotificationScreen.route)
+                            onNotificationIconClick()
                         },
 
                     contentAlignment = Alignment.Center

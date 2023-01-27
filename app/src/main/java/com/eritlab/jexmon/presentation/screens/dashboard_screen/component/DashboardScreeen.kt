@@ -1,8 +1,6 @@
 package com.eritlab.jexmon.presentation.screens.dashboard_screen.component
 
 import androidx.compose.foundation.*
-import androidx.compose.foundation.gestures.Orientation
-import androidx.compose.foundation.gestures.scrollable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyListState
 import androidx.compose.foundation.lazy.LazyRow
@@ -29,7 +27,11 @@ import androidx.constraintlayout.compose.ConstraintLayout
 import androidx.constraintlayout.compose.Dimension
 import androidx.core.graphics.toColor
 import androidx.hilt.navigation.compose.hiltViewModel
+import androidx.navigation.NavController
+import androidx.navigation.compose.rememberNavController
 import com.eritlab.jexmon.R
+import com.eritlab.jexmon.presentation.graphs.Graph
+import com.eritlab.jexmon.presentation.graphs.detail_graph.DetailScreen
 import com.eritlab.jexmon.presentation.screens.dashboard_screen.DashboardViewModel
 import com.eritlab.jexmon.presentation.ui.theme.PrimaryColor
 import com.eritlab.jexmon.presentation.ui.theme.PrimaryLightColor
@@ -41,7 +43,8 @@ import dagger.hilt.android.lifecycle.HiltViewModel
 fun DashboardScreen(
     popularProductState: LazyListState = rememberLazyListState(),
     suggestionProductState: LazyListState = rememberLazyListState(),
-    productViewModel: DashboardViewModel = hiltViewModel()
+    productViewModel: DashboardViewModel = hiltViewModel(),
+    onItemClick: (Int) -> Unit
 ) {
 
     val state = productViewModel.state.value
@@ -330,7 +333,7 @@ fun DashboardScreen(
                             .background(Color.LightGray, shape = RoundedCornerShape(10.dp))
                             .clip(RoundedCornerShape(10.dp))
                             .clickable {
-
+                                onItemClick(state.product[it].id)
                             },
                         contentAlignment = Alignment.Center
                     ) {

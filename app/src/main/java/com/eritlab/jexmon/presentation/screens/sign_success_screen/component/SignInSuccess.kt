@@ -15,7 +15,7 @@ import androidx.navigation.NavController
 import com.eritlab.jexmon.presentation.common.CustomDefaultBtn
 import com.eritlab.jexmon.presentation.ui.theme.TextColor
 import com.eritlab.jexmon.R
-import com.eritlab.jexmon.presentation.graphs.root.Graph
+import com.eritlab.jexmon.presentation.graphs.Graph
 
 @Composable
 fun SignInScreen(navController: NavController) {

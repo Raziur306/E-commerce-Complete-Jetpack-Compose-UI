@@ -17,4 +17,5 @@ object DataModule {
     fun provideProductRepository(demoDB: DemoDB): ProductRepository {
         return ProductRepositoryImp(demoDB)
     }
+
 }
