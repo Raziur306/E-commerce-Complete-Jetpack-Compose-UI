@@ -35,7 +35,9 @@ fun HomeNavGraph(navHostController: NavHostController) {
             ConversationScreen()
         }
         composable(ShopHomeScreen.ProfileScreen.route) {
-            ProfileScreen()
+            ProfileScreen() {
+                navHostController.popBackStack()
+            }
         }
         //detail graph
         detailNavGraph(navController = navHostController)
