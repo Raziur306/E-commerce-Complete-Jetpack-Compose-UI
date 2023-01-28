@@ -1,6 +1,5 @@
 package com.eritlab.jexmon.presentation.screens.product_detail_screen
 
-import android.util.Log
 import androidx.compose.runtime.State
 import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.SavedStateHandle
@@ -8,7 +7,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.eritlab.jexmon.common.Constrains
 import com.eritlab.jexmon.domain.use_case.get_product_detail.GetProductDetailUseCase
-import com.eritlab.jexmon.presentation.common.component.common.Resource
+import com.eritlab.jexmon.common.Resource
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach

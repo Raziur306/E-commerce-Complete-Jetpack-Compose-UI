@@ -1,4 +1,4 @@
-package com.eritlab.jexmon.presentation.common.component.common
+package com.eritlab.jexmon.common
 
 sealed class Resource<T>(val data: T? = null, val message: String? = null) {
     class Loading<T>() : Resource<T>()
