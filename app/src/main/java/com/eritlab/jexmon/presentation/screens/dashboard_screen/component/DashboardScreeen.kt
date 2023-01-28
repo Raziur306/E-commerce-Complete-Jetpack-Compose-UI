@@ -214,7 +214,7 @@ fun DashboardScreen(
             Text(text = "See More", color = MaterialTheme.colors.TextColor)
         }
 
-        Spacer(modifier = Modifier.height(80.dp))
+        Spacer(modifier = Modifier.height(15.dp))
 //special offer cart
         LazyRow(
             state = popularProductState,
@@ -303,7 +303,7 @@ fun DashboardScreen(
 
 
 
-        Spacer(modifier = Modifier.height(30.dp))
+        Spacer(modifier = Modifier.height(15.dp))
         Row(
             modifier = Modifier.fillMaxWidth(),
             horizontalArrangement = Arrangement.SpaceBetween
