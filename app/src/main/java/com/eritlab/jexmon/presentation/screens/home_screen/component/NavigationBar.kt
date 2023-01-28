@@ -73,7 +73,8 @@ fun NavigationBar(
             bottomNavVisibility = true
             isVisible(true)
         }
-        DetailScreen.ProductDetailScreen.route + "/{$Constrains.PRODUCT_ID_PARAM}" -> {
+        DetailScreen.ProductDetailScreen.route + "/{${Constrains.PRODUCT_ID_PARAM}}" -> {
+
             bottomNavVisibility = false
             isVisible(false)
         }

@@ -12,7 +12,7 @@ class ProductRepositoryImp @Inject constructor(
         return demoDB.getProduct()
     }
 
-    override suspend fun getProductDetail(id: Int): ProductModel? {
-        return demoDB.getProduct()[id]
+    override suspend fun getProductDetail(id: Int): ProductModel {
+        return demoDB.getProduct()[id-1]
     }
 }
