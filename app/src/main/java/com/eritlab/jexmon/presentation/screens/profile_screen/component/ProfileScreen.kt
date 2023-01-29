@@ -95,7 +95,7 @@ fun ProfileScreen(
         Row(
             modifier = Modifier
                 .fillMaxWidth()
-                .height(70.dp)
+                .height(60.dp)
 
                 .background(Color(0x8DB3B0B0), shape = RoundedCornerShape(10.dp))
                 .clip(RoundedCornerShape(10.dp))
@@ -126,7 +126,7 @@ fun ProfileScreen(
         Row(
             modifier = Modifier
                 .fillMaxWidth()
-                .height(70.dp)
+                .height(60.dp)
 
                 .background(Color(0x8DB3B0B0), shape = RoundedCornerShape(10.dp))
                 .clip(RoundedCornerShape(10.dp))
@@ -158,7 +158,7 @@ fun ProfileScreen(
         Row(
             modifier = Modifier
                 .fillMaxWidth()
-                .height(70.dp)
+                .height(60.dp)
 
                 .background(Color(0x8DB3B0B0), shape = RoundedCornerShape(10.dp))
                 .clip(RoundedCornerShape(10.dp))
@@ -190,7 +190,7 @@ fun ProfileScreen(
         Row(
             modifier = Modifier
                 .fillMaxWidth()
-                .height(70.dp)
+                .height(60.dp)
 
                 .background(Color(0x8DB3B0B0), shape = RoundedCornerShape(10.dp))
                 .clip(RoundedCornerShape(10.dp))
@@ -221,7 +221,7 @@ fun ProfileScreen(
         Row(
             modifier = Modifier
                 .fillMaxWidth()
-                .height(70.dp)
+                .height(60.dp)
                 .background(Color(0x8DB3B0B0), shape = RoundedCornerShape(10.dp))
                 .clip(RoundedCornerShape(10.dp))
                 .clickable {
